@@ -39,6 +39,7 @@
     "dev": "rollup -c -w"
   },
   "main": "dist/dollar-state.cjs.js",
+  "types": "src/main.d.ts",
   "module": "dist/dollar-state.esm.js",
   "browser": "dist/dollar-state.min.js",
   "files": [
