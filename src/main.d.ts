@@ -4,6 +4,8 @@ declare interface Store<TState> {
   getState (): TState
 }
 
-export = class $tate {
-  static createStore<TState> (initialState: TState, persistenceKey: string, isDebug = false): Store<TState>
+declare class $tate {
+  static createStore<TState> (initialState: TState, persistenceKey: string, isDebug?: boolean): Store<TState>
 }
+
+export = $tate
