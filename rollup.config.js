@@ -2,6 +2,7 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import buble from "rollup-plugin-buble";
 import { uglify } from "rollup-plugin-uglify";
+import copy from "rollup-plugin-copy";
 
 import pkg from "./package.json";
 
@@ -50,7 +51,10 @@ export default [
       buble({
         exclude: ["node_modules/**"]
       }),
-      uglify(uglifyCfg)
+      uglify(uglifyCfg),
+      copy({
+        "src/main.d.ts": pkg.types
+      })
     ]
   },
   // ES module (for bundlers) build.
