@@ -36,7 +36,8 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "prepublishOnly": "npm run build"
   },
   "main": "dist/dollar-state.cjs.js",
   "module": "dist/dollar-state.esm.js",
