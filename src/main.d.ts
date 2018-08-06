@@ -1,11 +1,16 @@
 declare interface Store<TState> {
-  subscribe (subscriberFunction: (state: TState) => void): (() => void) | undefined
-  updateState (updaterFn: (draftState: TState) => TState): void
-  getState (): TState
+  subscribe(subscriberFunction: (state: TState) => void): (() => void) | undefined;
+  updateState(updaterFn: (draftState: TState) => TState): void;
+  getState(): TState;
+}
+
+declare interface TStateOptions {
+  persistenceKey?: string;
+  isDebug?: boolean;
 }
 
 declare class $tate {
-  static createStore<TState> (initialState: TState, persistenceKey: string, isDebug?: boolean): Store<TState>
+  static createStore<TState>(initialState?: TState, options?: TStateOptions): Store<TState>;
 }
 
-export = $tate
+export = $tate;
