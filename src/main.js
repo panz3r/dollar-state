@@ -9,7 +9,7 @@
 import produce, { setAutoFreeze } from "immer";
 
 export default class $tate {
-  static createStore(initialState, persistenceKey, isDebug = false) {
+  static createStore(initialState, { persistenceKey, isDebug = false } = {}) {
     // DEVELOPMENT PURPOSE - Remove when running in PRODUCTION mode
     setAutoFreeze(isDebug);
 
@@ -31,7 +31,9 @@ export default class $tate {
     const store = {
       _storage: _storage,
       _persistenceKey: persistenceKey,
-      _state: hydratedInitialState, // state is an object
+      _state: produce({}, function(draftState) {
+        Object.assign(draftState, hydratedInitialState);
+      }), // state is an object
       _listeners: [], // listeners are an array of functions
       subscribe: function(subscriberFn) {
         if (typeof subscriberFn !== "function") {
