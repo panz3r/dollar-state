@@ -19,14 +19,15 @@ Create a store by running `createStore`
 ```js
 import $tate from "dollar-state";
 
-const store = $state.createStore();
+const store = $tate.createStore();
 ```
 
-`createStore` support 3 arguments
+`createStore` can be invoked with 2 arguments
 
 - `initialState`, an object to initialize the state with
-- `persistenceKey`, a string to be used to persist the store to `LocalStorage` on each update (if required)
-- `debug`, a flag to enable debug logging on `updateState` calls, default: `false`
+- `options`, an optional object with the following keys
+  - `persistenceKey`, a string to be used to persist the store to `LocalStorage` on each update (if required)
+  - `debug`, a flag to enable debug logging on `updateState` calls, default: `false`
 
 ### Update
 
