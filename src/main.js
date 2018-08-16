@@ -47,6 +47,7 @@ export default class $tate {
     const store = {
       _storage: _storage,
       _persistenceKey: persistenceKey,
+      _initialState: Object.assign({}, initialState),
       _state: produce({}, function(draftState) {
         Object.assign(draftState, hydratedInitialState);
       }), // state is an object
@@ -98,6 +99,12 @@ export default class $tate {
       },
       getState: function() {
         return this._state;
+      },
+      resetState: function() {
+        const _initialState = this._initialState;
+        this.updateState(function(state) {
+          Object.assign(state, _initialState);
+        }, 'resetState');
       }
     };
 
