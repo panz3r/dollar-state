@@ -1,10 +1,10 @@
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import buble from "rollup-plugin-buble";
-import { uglify } from "rollup-plugin-uglify";
-import copy from "rollup-plugin-copy";
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import buble from 'rollup-plugin-buble';
+import { uglify } from 'rollup-plugin-uglify';
+import copy from 'rollup-plugin-copy';
 
-import pkg from "./package.json";
+import pkg from './package.json';
 
 const uglifyCfg = {
   output: {
@@ -23,17 +23,17 @@ const uglifyCfg = {
 export default [
   // browser-friendly UMD build
   {
-    input: "src/main.js",
+    input: 'src/main.js',
     output: {
-      name: "$tate",
+      name: '$tate',
       file: pkg.browser,
-      format: "umd"
+      format: 'umd'
     },
     plugins: [
       resolve(),
       commonjs(),
       buble({
-        exclude: ["node_modules/**"]
+        exclude: ['node_modules/**']
       }), // transpile ES2015+ to ES5
       uglify(uglifyCfg) // Uglify output code
     ]
@@ -41,33 +41,33 @@ export default [
 
   // CommonJS (for Node) and ES module (for bundlers) build.
   {
-    input: "src/main.js",
-    external: ["immer"],
+    input: 'src/main.js',
+    external: Object.keys(pkg.dependencies),
     output: {
       file: pkg.main,
-      format: "cjs"
+      format: 'cjs'
     },
     plugins: [
       buble({
-        exclude: ["node_modules/**"]
+        exclude: ['node_modules/**']
       }),
       uglify(uglifyCfg),
       copy({
-        "src/main.d.ts": pkg.types
+        'src/main.d.ts': pkg.types
       })
     ]
   },
   // ES module (for bundlers) build.
   {
-    input: "src/main.js",
-    external: ["immer"],
+    input: 'src/main.js',
+    external: Object.keys(pkg.dependencies),
     output: {
       file: pkg.module,
-      format: "es"
+      format: 'es'
     },
     plugins: [
       buble({
-        exclude: ["node_modules/**"]
+        exclude: ['node_modules/**']
       })
     ]
   }

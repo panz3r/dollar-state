@@ -6,9 +6,25 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. 
  */
 
-import produce, { setAutoFreeze } from "immer";
+import produce, { setAutoFreeze } from 'immer';
 
 export default class $tate {
+  static _logStateUpdate(storeName, actionName, oldState, newState) {
+    try {
+      console.group(storeName || 'not-persisted');
+
+      console.log('oldState:', oldState);
+
+      !!actionName && console.log('action:', actionName);
+
+      console.log('newState:', newState);
+
+      console.groupEnd();
+    } catch (e) {
+      console.log(storeName, { oldState, action: actionName, newState });
+    }
+  }
+
   static createStore(initialState, { persistenceKey, isDebug = false } = {}) {
     // DEVELOPMENT PURPOSE - Remove when running in PRODUCTION mode
     setAutoFreeze(isDebug);
@@ -36,8 +52,8 @@ export default class $tate {
       }), // state is an object
       _listeners: [], // listeners are an array of functions
       subscribe: function(subscriberFn) {
-        if (typeof subscriberFn !== "function") {
-          console.error("subscriberFn MUST be a function.");
+        if (typeof subscriberFn !== 'function') {
+          console.error('subscriberFn MUST be a function.');
           return;
         }
 
@@ -47,23 +63,23 @@ export default class $tate {
         try {
           subscriberFn(this._state);
         } catch (error) {
-          console.error("Subscriber function failed with error:", error);
+          console.error('Subscriber function failed with error:', error);
         }
 
         return function() {
           store._listeners.splice(newIndex, 1);
         };
       },
-      updateState: function(updaterFn) {
-        if (typeof updaterFn !== "function") {
-          console.error("updaterFn MUST be a function.");
+      updateState: function(updaterFn, actionName) {
+        if (typeof updaterFn !== 'function') {
+          console.error('updaterFn MUST be a function.');
           return;
         }
 
         const newState = produce(this._state, updaterFn);
 
         if (isDebug) {
-          console.log({ oldState: Object.assign({}, this._state), newState: newState });
+          $tate._logStateUpdate(this._persistenceKey, actionName, Object.assign({}, this._state), newState);
         }
 
         this._state = newState;
@@ -71,7 +87,7 @@ export default class $tate {
           try {
             listener(newState);
           } catch (error) {
-            console.error("Subscriber function failed with error:", error);
+            console.error('Subscriber function failed with error:', error);
           }
         });
 

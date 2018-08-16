@@ -1,6 +1,6 @@
 declare interface Store<TState> {
   subscribe(subscriberFunction: (state: TState) => void): (() => void) | undefined;
-  updateState(updaterFn: (draftState: TState) => TState): void;
+  updateState(updaterFn: (draftState: TState) => TState, actionName?: string): void;
   getState(): TState;
 }
 
