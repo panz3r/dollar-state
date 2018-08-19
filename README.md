@@ -17,7 +17,7 @@ npm install dollar-state
 Create a store by running `createStore`
 
 ```js
-import $tate from "dollar-state";
+import $tate from 'dollar-state';
 
 const store = $tate.createStore();
 ```
@@ -55,6 +55,38 @@ const _unsubscribeStore = store.subscribe(function(newState) {
 if (_unsubscribeStore) {
   _unsubscribeStore();
 }
+```
+
+---
+
+## Demo
+
+A demo using `jQuery` is available inside the `demo` folder.
+To run the demo:
+
+- build the library using
+
+```sh
+npm run dev
+```
+
+- copy (or symlink) `dollar-state.min.js` file from `dist` to `demo` folder
+
+```sh
+cp dist/dollar-state.min.js demo
+```
+
+- install `demo` npm dependencies
+
+```sh
+cd demo
+npm install
+```
+
+- run demo app
+
+```sh
+npm run start
 ```
 
 ---

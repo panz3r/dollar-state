@@ -1,0 +1,26 @@
+{
+  "name": "dollar-state-demo",
+  "version": "1.0.0",
+  "description": "A demo for dollar-state library built using jQuery and Bootstrap",
+  "author": {
+    "name": "Mattia Panzeri",
+    "email": "mattia.panzeri93@gmail.com",
+    "url": "https://github.com/panz3r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panz3r/dollar-state/demo"
+  },
+  "keywords": [
+    "dollar-state",
+    "demo"
+  ],
+  "license": "MIT",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server --cors -c-1 -o"
+  },
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
