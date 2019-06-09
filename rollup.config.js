@@ -10,7 +10,7 @@ const uglifyCfg = {
   output: {
     preamble: `
 /*
-* Copyright (c) 2018 Mattia Panzeri <mattia.panzeri93@gmail.com>
+* Copyright (c) 2018-now Mattia Panzeri <mattia.panzeri93@gmail.com>
 * 
 * This Source Code Form is subject to the terms of the Mozilla Public
 * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -39,7 +39,7 @@ export default [
     ]
   },
 
-  // CommonJS (for Node) and ES module (for bundlers) build.
+  // CommonJS (for Node) build.
   {
     input: 'src/main.js',
     external: Object.keys(pkg.dependencies),
@@ -53,7 +53,9 @@ export default [
       }),
       uglify(uglifyCfg),
       copy({
-        'src/main.d.ts': pkg.types
+        targets: {
+          'src/main.d.ts': pkg.types,
+        },
       })
     ]
   },
