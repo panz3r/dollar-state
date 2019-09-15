@@ -53,9 +53,9 @@ export default [
       }),
       uglify(uglifyCfg),
       copy({
-        targets: {
-          'src/main.d.ts': pkg.types,
-        },
+        targets: [
+          { src: 'src/main.d.ts', dest: 'dist', rename: 'dollar-state.d.ts' },
+        ],
       })
     ]
   },
