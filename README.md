@@ -2,6 +2,12 @@
 
 > A simple JS state management library - inspired by Redux and based on Immer
 
+[![license](https://img.shields.io/github/license/panz3r/dollar-state.svg)](https://github.com/panz3r/dollar-state/blob/master/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/dollar-state.svg)](https://www.npmjs.com/package/dollar-state)
+
+[![Github Issues](https://img.shields.io/github/issues/panz3r/dollar-state.svg)](https://github.com/panz3r/dollar-state/issues)
+[![Coverage Status](https://coveralls.io/repos/github/panz3r/dollar-state/badge.svg?branch=master)](https://coveralls.io/github/panz3r/dollar-state?branch=master)
+
 ## Installation
 
 Install `$tate` by running
@@ -55,6 +61,14 @@ const _unsubscribeStore = store.subscribe(function(newState) {
 if (_unsubscribeStore) {
   _unsubscribeStore();
 }
+```
+
+### Reset state
+
+To reset a store to its initial state
+
+```js
+store.resetState();
 ```
 
 ---
