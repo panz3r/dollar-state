@@ -34,7 +34,7 @@ export default class $tate {
     try {
       _storage = window.localStorage;
     } catch (e) {
-      console.error("Failed to retrieve LocalStorage. Persistence won't be available.", e);
+      console.warn("Failed to retrieve LocalStorage. Persistence won't be available.\nCause:", e.message);
     }
 
     let hydratedInitialState = initialState || {};
