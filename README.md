@@ -8,6 +8,9 @@
 [![Github Issues](https://img.shields.io/github/issues/panz3r/dollar-state.svg)](https://github.com/panz3r/dollar-state/issues)
 [![Coverage Status](https://coveralls.io/repos/github/panz3r/dollar-state/badge.svg?branch=master)](https://coveralls.io/github/panz3r/dollar-state?branch=master)
 
+[![NPM downloads](https://img.shields.io/npm/dm/dollar-state.svg)](https://npmjs.com/package/dollar-state)
+[![jsDelivr](https://data.jsdelivr.com/v1/package/npm/dollar-state/badge?style=rounded)](https://www.jsdelivr.com/package/npm/dollar-state)
+
 ## Installation
 
 Install `$tate` by running
