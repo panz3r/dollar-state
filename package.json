@@ -29,6 +29,7 @@
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "babel-jest": "^24.9.0",
+    "coveralls": "^3.0.6",
     "jest": "^24.9.0",
     "jest-localstorage-mock": "^2.4.0",
     "rimraf": "^3.0.0",
@@ -40,10 +41,14 @@
     "rollup-plugin-uglify": "^6.0.3"
   },
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "npm test && rimraf dist",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "precoverage": "rimraf coverage",
+    "coverage": "jest --coverage",
+    "coveralls": "npm run coverage -- --coverageReporters=text-lcov | coveralls",
     "prepublishOnly": "npm run build"
   },
   "main": "dist/dollar-state.cjs.js",

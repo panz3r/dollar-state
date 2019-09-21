@@ -132,5 +132,8 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/macos,windows,node
 
+# Coveralls
+.coveralls.yml
+
 # Compiled files
 dist/
