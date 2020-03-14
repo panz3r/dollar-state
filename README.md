@@ -6,6 +6,7 @@
 [![NPM version](https://img.shields.io/npm/v/dollar-state.svg)](https://www.npmjs.com/package/dollar-state)
 
 [![Github Issues](https://img.shields.io/github/issues/panz3r/dollar-state.svg)](https://github.com/panz3r/dollar-state/issues)
+[![Build Status](https://travis-ci.com/panz3r/dollar-state.svg?branch=master)](https://travis-ci.com/panz3r/dollar-state)
 [![Coverage Status](https://coveralls.io/repos/github/panz3r/dollar-state/badge.svg?branch=master)](https://coveralls.io/github/panz3r/dollar-state?branch=master)
 
 [![NPM downloads](https://img.shields.io/npm/dm/dollar-state.svg)](https://npmjs.com/package/dollar-state)
@@ -109,3 +110,7 @@ npm run start
 ---
 
 Made with :sparkles: & :heart: by [Mattia Panzeri](https://github.com/panz3r) and [contributors](https://github.com/panz3r/dollar-state/graphs/contributors)
+
+If you found this project to be helpful, please consider buying me a coffee.
+
+[![buy me a coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoff.ee/4f18nT0Nk)
