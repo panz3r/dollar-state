@@ -1,6 +1,6 @@
 {
   "name": "dollar-state",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "description": "A simple JS state management library - inspired by Redux and based on Immer",
   "author": {
     "name": "Mattia Panzeri",
