@@ -1,0 +1,26 @@
+{
+  "dist/dollar-state.min.js": {
+    "bundled": 13672,
+    "minified": 10729,
+    "gzipped": 4264
+  },
+  "dist/dollar-state.cjs.js": {
+    "bundled": 4589,
+    "minified": 2050,
+    "gzipped": 877
+  },
+  "dist/dollar-state.esm.js": {
+    "bundled": 4397,
+    "minified": 1902,
+    "gzipped": 821,
+    "treeshaked": {
+      "rollup": {
+        "code": 14,
+        "import_statements": 14
+      },
+      "webpack": {
+        "code": 2826
+      }
+    }
+  }
+}

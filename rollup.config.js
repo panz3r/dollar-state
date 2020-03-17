@@ -1,8 +1,9 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import buble from 'rollup-plugin-buble';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import buble from '@rollup/plugin-buble';
 import { uglify } from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
+import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
 
 import pkg from './package.json';
 
@@ -11,13 +12,13 @@ const uglifyCfg = {
     preamble: `
 /*
 * Copyright (c) 2018-now Mattia Panzeri <mattia.panzeri93@gmail.com>
-* 
+*
 * This Source Code Form is subject to the terms of the Mozilla Public
 * License, v. 2.0. If a copy of the MPL was not distributed with this
-* file, You can obtain one at http://mozilla.org/MPL/2.0/. 
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
-`
-  }
+`,
+  },
 };
 
 export default [
@@ -27,16 +28,17 @@ export default [
     output: {
       name: '$tate',
       file: pkg.browser,
-      format: 'umd'
+      format: 'umd',
     },
     plugins: [
       resolve(),
       commonjs(),
       buble({
-        exclude: ['node_modules/**']
+        exclude: ['node_modules/**'],
       }), // transpile ES2015+ to ES5
-      uglify(uglifyCfg) // Uglify output code
-    ]
+      sizeSnapshot(),
+      uglify(uglifyCfg), // Uglify output code
+    ],
   },
 
   // CommonJS (for Node) build.
@@ -45,19 +47,20 @@ export default [
     external: Object.keys(pkg.dependencies),
     output: {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
     },
     plugins: [
       buble({
-        exclude: ['node_modules/**']
+        exclude: ['node_modules/**'],
       }),
+      sizeSnapshot(),
       uglify(uglifyCfg),
       copy({
         targets: [
           { src: 'src/main.d.ts', dest: 'dist', rename: 'dollar-state.d.ts' },
         ],
-      })
-    ]
+      }),
+    ],
   },
   // ES module (for bundlers) build.
   {
@@ -65,12 +68,13 @@ export default [
     external: Object.keys(pkg.dependencies),
     output: {
       file: pkg.module,
-      format: 'es'
+      format: 'es',
     },
     plugins: [
       buble({
-        exclude: ['node_modules/**']
-      })
-    ]
-  }
+        exclude: ['node_modules/**'],
+      }),
+      sizeSnapshot(),
+    ],
+  },
 ];
