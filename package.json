@@ -51,7 +51,7 @@
     "coverage": "jest --coverage",
     "coverage:lcov": "npm run coverage -- --coverageReporters=lcov",
     "coveralls": "npm run coverage -- --coverageReporters=text-lcov | coveralls",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run test && npm run build"
   },
   "main": "dist/dollar-state.cjs.js",
   "types": "dist/dollar-state.d.ts",
