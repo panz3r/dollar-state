@@ -42,13 +42,14 @@
     "rollup-plugin-uglify": "^6.0.4"
   },
   "scripts": {
-    "prebuild": "npm test && rimraf dist",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "test": "jest",
     "test:watch": "jest --watch",
     "precoverage": "rimraf coverage",
     "coverage": "jest --coverage",
+    "coverage:lcov": "npm run coverage -- --coverageReporters=lcov",
     "coveralls": "npm run coverage -- --coverageReporters=text-lcov | coveralls",
     "prepublishOnly": "npm run build"
   },
