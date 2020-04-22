@@ -14,11 +14,6 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v2
 
-      - name: Set Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: 13
-
       - run: node --version
       - run: npm --version
 
@@ -35,11 +30,6 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-
-      - name: Set Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: 13
 
       - run: node --version
       - run: npm --version
@@ -58,11 +48,6 @@ jobs:
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
-
-      - name: Set Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: 13
 
       - run: node --version
       - run: npm --version
